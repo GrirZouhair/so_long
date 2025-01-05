@@ -6,11 +6,11 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 10:33:35 by zogrir            #+#    #+#             */
-/*   Updated: 2024/12/31 12:12:47 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/01/02 10:30:56 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/get_next_line.h"
 
 
 static char	*ft_read_store(int fd, char *leftover)
@@ -73,7 +73,7 @@ static char	*ft_update_leftover(char *leftover)
 	return (free(leftover), new_leftover);
 }
 
-static char	*get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char		*leftover;
 	char			*line;
