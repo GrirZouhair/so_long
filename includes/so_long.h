@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 10:36:55 by zogrir            #+#    #+#             */
-/*   Updated: 2025/01/03 18:20:30 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/01/05 08:33:21 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct game_controll
 	int		c;
 	int		p;
 	int		e;
-	int		x;
-	int		y;
+	int		w;
+	int		h;
 };
 
 typedef struct game_vars
