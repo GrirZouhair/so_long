@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 04:37:16 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/07 05:19:59 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/07 06:46:26 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,11 @@ void map_extention(char *file_extention)
 		return ;
 	ft_putstr_fd("\033[1;31m🛑ERROR: Adding to list failed\033[0m\n", 2);
     exit(1);
+}
+#include<stdio.h>
+int main()
+{
+    char s[] = "example.beer";
+   	map_extention(s);
+    return 0;
 }
