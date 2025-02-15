@@ -5,30 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 04:56:56 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/07 06:45:59 by zogrir           ###   ########.fr       */
+/*   Created: 2025/02/11 08:26:59 by zogrir            #+#    #+#             */
+/*   Updated: 2025/02/11 08:42:52 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../includes/get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+#include "../includes/get_next_line.h"
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (str[i])
+	while (s[i])
+	{
 		i++;
+	}
 	return (i);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (fd == -1 || !s)
-		return ;
-	while (*s)
-		write(fd, s++, 1);
-	write(1, "\n", 1);
 }
 
 char	*ft_strchr(const char *s, int c)
@@ -117,17 +110,3 @@ char	*ft_strdup(const char *s)
 	destination[s_len] = '\0';
 	return (destination);
 }
-
-// #include<stdio.h>
-// int main()
-// {
-// 	int fd;
-// 	char *line;
-// 	fd = open("../maps/map1.ber" , O_RDWR);
-// 	for(int i; i < 6; i++)
-// 	{
-// 		line = get_next_line(fd);
-// 		printf("%s", line);
-// 	}
-// 	close(fd);	
-// }

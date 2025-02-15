@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_extention.c                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 04:37:16 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/11 08:30:33 by zogrir           ###   ########.fr       */
+/*   Created: 2025/02/11 15:13:05 by zogrir            #+#    #+#             */
+/*   Updated: 2025/02/15 12:24:20 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "../includes/so_long.h"
 
-void	map_extention(char *file_extention)
+int	main(int ac, char **av)
 {
-	size_t	len;
-	size_t	ext_len;
-
-	len = ft_strlen(file_extention);
-	ext_len = ft_strlen(".ber");
-	if (len >= ext_len
-		&& ft_strncmp(file_extention + len - ext_len, ".ber", ext_len) == 0)
-		return ;
-	ft_putstr_fd("\033[1;31m🛑ERROR: Adding to list failed\033[0m\n", 2);
+	if (ac > 1)
+	{
+		char **map = read_map(av[1]);
+		if(validate_map(map))
+		{
+			printf("done");
+		}else{
+			printf("not done");
+		}
+	}else
+	{
+	ft_putstr_fd("\033[1;31m🛑ERROR: few args\033[0m\n", 2);
 	exit(1);
-}
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (fd == - 1 || !s)
-		return;
-	while (*s)
-		write(fd, s++, 1);
-	write(1, "\n", 1);
+		
+	}
 }
