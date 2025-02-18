@@ -6,11 +6,11 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 04:37:16 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/11 08:30:33 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/18 11:13:08 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 void	map_extention(char *file_extention)
 {

@@ -6,12 +6,12 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:27:03 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/15 08:24:32 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/18 11:13:05 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../includes/get_next_line.h"
+#include "../../includes/get_next_line.h"
 
 static char	*ft_read_store(int fd, char *leftover)
 {

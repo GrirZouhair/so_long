@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   freeing.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/11 09:37:34 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/15 08:08:03 by zogrir           ###   ########.fr       */
+/*   Created: 2025/02/07 04:33:39 by zogrir            #+#    #+#             */
+/*   Updated: 2025/02/18 11:12:56 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
-void	ft_free_arr(char **arr)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (arr[i])
+	if (n < 1)
+		return (0);
+	while (s1[i] && s2[i] && i < n - 1 && s1[i] == s2[i])
 	{
-		free(arr[i]);
-		i++;		
+		i++;
 	}
-	free(arr);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
