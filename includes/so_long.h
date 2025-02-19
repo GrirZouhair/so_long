@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 04:33:57 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/18 13:12:43 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/19 15:46:37 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,6 @@ typedef struct s_player
 	int moves;
 } t_player;
 
-
-typedef struct s_game
-{
-	void	*mlx;
-	void	*win;
-	int		width_win;
-	int		height_win;
-	t_player player;
-} t_game;
-
 typedef	struct s_textures
 {
 	void *wall;
@@ -45,6 +35,17 @@ typedef	struct s_textures
 	void *collective;
 	void *exit;
 } t_textures;
+
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+	int		width_win;
+	int		height_win;
+	t_player player;
+	t_textures tx;
+} t_game;
+
 
 typedef struct s_movement
 {
@@ -88,4 +89,6 @@ char	**read_map(char *file_name);
 void init_window(t_game *game, int w_win, int h_win);
 void load_textures(t_game *game, t_textures *tx);
 void	render_map(t_game *game, char **map, t_textures *tx);
+
+int	keyHandler(int key_code, void *param);
 #endif

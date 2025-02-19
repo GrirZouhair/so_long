@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:17:19 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/18 11:17:50 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/19 15:53:01 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void load_textures(t_game *game, t_textures *tx)
     tx->collective = mlx_xpm_file_to_image(game->mlx, "./assets/key.xpm", &game->width_win, &game->height_win);
     tx->exit = mlx_xpm_file_to_image(game->mlx, "./assets/exit.xpm", &game->width_win, &game->height_win);
 }
-
-
 
 void	render_map(t_game *game, char **map, t_textures *tx)
 {
