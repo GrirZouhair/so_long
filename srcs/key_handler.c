@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:23:51 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/19 17:41:11 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/19 18:16:56 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@ static void	player_movement(t_game *game, int new_x, int new_y)
 	if (player->map[new_y][new_x] == '1')
 		return;
 
-	if (player->map[new_y][new_x] == 'E')
+	if (player->map[new_y][new_x] != 'E')
+	{
+		player->map[player->y][player->x] = '0';
+		player->x = new_x;
+		player->y = new_y;
+		player->map[new_y][new_x] = 'P';
+	}
+	else if (player->map[new_y][new_x] == 'E')
 	{
 		while (player->map[i])
 		{
@@ -38,16 +45,8 @@ static void	player_movement(t_game *game, int new_x, int new_y)
 		{
 			printf("🎉 You're won! 🎉\n");
 			exit(0);
-		}		
+		}
 	}
-
-	if (player->map[new_y][new_x] == 'C')
-		player->map[new_y][new_x] = '0';
-
-	player->map[player->y][player->x] = '0'; 
-	player->x = new_x;
-	player->y = new_y;
-	player->map[new_y][new_x] = 'P';
 
 
 	render_map(game, game->player.map, &game->tx);
