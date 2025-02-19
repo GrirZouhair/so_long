@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:23:51 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/19 17:32:43 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/19 17:41:11 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ static void	player_movement(t_game *game, int new_x, int new_y)
 	player->y = new_y;
 	player->map[new_y][new_x] = 'P';
 
-	player->moves++;
-	printf("moves [%d]\n", player->moves);
 
 	render_map(game, game->player.map, &game->tx);
 }
@@ -62,14 +60,27 @@ int	keyHandler(int key_code, void *param)
 	int new_x = player->x;
 	int new_y = player->y;
 	if (key_code == KEY_W)
+	{
 		new_y--;
+		printf("moves [%d]\n", game->player.moves++);
+	}
 	else if (key_code == KEY_A)
+	{
 		new_x--;
+		printf("moves [%d]\n", game->player.moves++);
+	}
 	else if (key_code == KEY_S)
+	{
 		new_y++;
+		printf("moves [%d]\n", game->player.moves++);
+	}
 	else if (key_code == KEY_D)
+	{
 		new_x++;
+		printf("moves [%d]\n", game->player.moves++);
+	}
 	player_movement(game, new_x, new_y);
+	
 	if (key_code == KEY_EXIT)
 	{
 		mlx_destroy_window(game->mlx, game->win);
