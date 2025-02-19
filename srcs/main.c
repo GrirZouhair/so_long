@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:13:05 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/19 15:03:37 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/19 16:50:58 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void ft_player_pos(t_player *p, char **map)
 int main(int ac, char **av)
 {
 	t_game game; 
-    t_textures tx;
 	int map_width = 0;
 	int map_height = 0;
     if (ac > 1)
@@ -51,9 +50,11 @@ int main(int ac, char **av)
 			map_height++;
 		}
    		init_window(&game, map_width , map_height);
-    	load_textures(&game, &tx);
-		render_map(&game, map, &tx);
+    	load_textures(&game, &game.tx);
+		
+		render_map(&game, map, &game.tx);
 		ft_player_pos(&game.player, map);
+		render_map(&game, map, &game.tx);
 		mlx_key_hook(game.win, keyHandler, &game);
 		mlx_loop(game.mlx);
 	}else

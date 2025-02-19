@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:17:19 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/19 15:53:01 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/19 16:41:31 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	render_map(t_game *game, char **map, t_textures *tx)
 		x = 0;
 		while (map[y][x])
 		{
+			if (!tx->floor || !tx->wall || !tx->player || !tx->collective || !tx->exit)
+			{
+				write(1, "the issue here", 17);
+			}
 			mlx_put_image_to_window(game->mlx, game->win, tx->floor, x * 32, y * 32);
 			if (map[y][x] == '1')
 				mlx_put_image_to_window(game->mlx, game->win, tx->wall, x * 32, y * 32);
