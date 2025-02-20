@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:13:05 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/19 16:50:58 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/20 17:34:42 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,14 @@ int main(int ac, char **av)
 	t_game game; 
 	int map_width = 0;
 	int map_height = 0;
-    if (ac > 1)
+	char **map = read_map(av[1]);
+	for (int i = 0; map[i] != NULL; i++)
 	{
-		char **map = read_map(av[1]);
+		printf("%s", map[i]);
+	}
+	
+	if (ac > 1)
+	{
 		while (map[map_height])
 		{
 			map_width = ft_strlen(map[map_height]);

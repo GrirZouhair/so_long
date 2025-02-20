@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 11:23:11 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/15 12:26:07 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/20 16:27:52 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ int	ft_valid_walls(char **map)
 	i = 0;
 	while (i < height)
 	{
-		if (map[i][0] != '1' || map[i][width-2] != '1')
+		if (map[i][0] != '1' || map[i][width-1] != '1')
 			return (ft_putstr_fd("\033[1;31m🛑ERROR: we need walls Y\033[0m\n", 2), 0);
 		i++;
 	}
 	return (1);
 }
+
+
+
 
 
 static void	ft_find_player_position(char **map, int *x, int *y)
@@ -109,8 +112,8 @@ int	ft_validate_path(char **map)
 
 int	validate_map(char **map)
 {
-	if (!ft_valid_char(map) || !ft_valid_rectangular(map)
-	||	!ft_valid_elements(map) || !ft_valid_walls(map)
+	if (!ft_valid_char(map) 
+	||	!ft_valid_elements(map) 
 	|| !ft_validate_path(map))
 	{
 		return (0);
@@ -118,3 +121,21 @@ int	validate_map(char **map)
 	return (1);
 			
 }
+//|| !ft_valid_rectangular(map)  || !ft_valid_walls(map)
+// int main()
+// {
+// 	char *map[] = {
+// 		"1111111",
+// 		"100PC01",
+// 		"10000E1",
+// 		"1111111",
+// 		NULL // Null-terminate the array
+// 	};
+
+// 	if (validate_map(map))
+// 		printf("\033[1;32m✅ Map is correctly surrounded by walls.\033[0m\n");
+// 	else
+// 		printf("\033[1;31m❌ Map validation failed.\033[0m\n");
+
+// 	return (0);
+// }

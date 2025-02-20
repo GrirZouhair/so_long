@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 04:33:57 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/19 15:46:37 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/20 21:45:07 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include<stdio.h>
 
 #include "mlx.h"
+#include "get_next_line.h"
 
 typedef struct s_player
 {
