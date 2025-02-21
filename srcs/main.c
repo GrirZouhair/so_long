@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:13:05 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/20 17:34:42 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/21 02:56:51 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ void ft_player_pos(t_player *p, char **map)
 	
 }
 
+int	get_lenghte(char *str)
+{
+	int	i = 0;
+
+	while (str[i] && str[i] != '\n')
+		i++;
+	return (i);	
+}
+
 int main(int ac, char **av)
 {
 	t_game game; 
@@ -51,7 +60,7 @@ int main(int ac, char **av)
 	{
 		while (map[map_height])
 		{
-			map_width = ft_strlen(map[map_height]);
+			map_width = get_lenghte(map[0]);
 			map_height++;
 		}
    		init_window(&game, map_width , map_height);

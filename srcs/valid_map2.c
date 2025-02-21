@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 11:23:11 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/20 16:27:52 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/21 01:56:26 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,8 @@ int	ft_validate_path(char **map)
 
 int	validate_map(char **map)
 {
-	if (!ft_valid_char(map) 
-	||	!ft_valid_elements(map) 
+	if (!ft_valid_char(map) || !ft_valid_rectangular(map) 
+	||	!ft_valid_elements(map) || !ft_valid_walls(map)
 	|| !ft_validate_path(map))
 	{
 		return (0);
@@ -121,7 +121,7 @@ int	validate_map(char **map)
 	return (1);
 			
 }
-//|| !ft_valid_rectangular(map)  || !ft_valid_walls(map)
+// 
 // int main()
 // {
 // 	char *map[] = {
