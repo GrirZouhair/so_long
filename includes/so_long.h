@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 04:33:57 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/22 10:50:11 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/22 11:28:41 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,5 @@ void	render_map(t_game *game, char **map);
 int		key_handler(int key_code, void *param);
 int		get_lenght(char *str);
 void	ft_putnbr_fd(int n, int fd);
+char	*ft_itoa(int n);
 #endif

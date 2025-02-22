@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:23:51 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/22 10:50:03 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/22 11:58:31 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ static void	player_movement(t_game *game, int new_x, int new_y)
 		player->x = new_x;
 		player->y = new_y;
 		player->map[new_y][new_x] = 'P';
+		ft_putnbr_fd(game->player.moves++, 1);
+		write(1, "\n", 1);
 	}
 	else if (count_collectibles(player->map) == 0)
 	{
@@ -74,7 +76,6 @@ static void	handle_movement(t_game *game, int key_code)
 		new_x++;
 	else
 		return ;
-	ft_putnbr_fd(game->player.moves++, 1);
 	player_movement(game, new_x, new_y);
 }
 

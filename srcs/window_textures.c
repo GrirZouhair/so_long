@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:17:19 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/22 09:22:57 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/22 12:01:36 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static void	render_tile(t_game *game, char tile, int x, int y)
 {
 	mlx_put_image_to_window(game->mlx, game->win,
 		game->tx.floor, x * 32, y * 32);
+	mlx_string_put(game->mlx, game->win, 1, 1,
+		0xFFFFFF, ft_itoa(game->player.moves));
 	if (tile == '1')
 	{
 		mlx_put_image_to_window(game->mlx, game->win,

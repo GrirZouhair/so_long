@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:13:05 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/22 10:19:02 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/22 12:00:43 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	main(int ac, char **av)
 	int		map_height;
 	char	**map;
 
-	map_height = 0;
-	map_width = 0;
+	game.player.moves = 1;
+	(1) && (map_height = 0, map_width = 0);
 	map = read_map(av[1]);
 	if (!validate_map(map))
 	{
