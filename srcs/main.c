@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:13:05 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/22 12:00:43 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/23 00:01:31 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,10 @@ int	main(int ac, char **av)
 
 	game.player.moves = 1;
 	(1) && (map_height = 0, map_width = 0);
+	map_extention(av[1]);
 	map = read_map(av[1]);
 	if (!validate_map(map))
-	{
-		ft_putstr_fd("\033[1;31m🛑ERR:Map Err\033[0m\n", 2);
-		exit(1);
-	}
+		return (ft_putstr_fd("\033[1;31m🛑ERR:Map Err\033[0m\n", 2), 0);
 	if (ac > 1)
 	{
 		ft_count(map, &map_height, &map_width);
