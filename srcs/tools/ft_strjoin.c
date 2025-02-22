@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 09:12:48 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/21 00:48:40 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/22 10:28:12 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ static void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
-
-
 
 static int	calculate_length(int size, char **strs, int i)
 {

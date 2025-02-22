@@ -6,17 +6,18 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:13:05 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/21 02:56:51 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/22 10:19:02 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-
-void ft_player_pos(t_player *p, char **map)
+void	ft_player_pos(t_player *p, char **map)
 {
-	int i = 0;
-	int j;
+	int	i;
+	int	j;
+
+	i = 0;
 	p->map = map;
 	while (p->map[i])
 	{
@@ -27,55 +28,48 @@ void ft_player_pos(t_player *p, char **map)
 			{
 				p->x = j;
 				p->y = i;
-				return;
+				return ;
 			}
 			j++;
 		}
 		i++;
 	}
-	
 }
 
-int	get_lenghte(char *str)
+static void	ft_count(char **map, int *h, int *w)
 {
-	int	i = 0;
-
-	while (str[i] && str[i] != '\n')
-		i++;
-	return (i);	
-}
-
-int main(int ac, char **av)
-{
-	t_game game; 
-	int map_width = 0;
-	int map_height = 0;
-	char **map = read_map(av[1]);
-	for (int i = 0; map[i] != NULL; i++)
+	while (map[*h])
 	{
-		printf("%s", map[i]);
+		*w = get_lenght(map[0]);
+		(*h)++;
 	}
-	
-	if (ac > 1)
+}
+
+int	main(int ac, char **av)
+{
+	t_game	game;
+	int		map_width;
+	int		map_height;
+	char	**map;
+
+	map_height = 0;
+	map_width = 0;
+	map = read_map(av[1]);
+	if (!validate_map(map))
 	{
-		while (map[map_height])
-		{
-			map_width = get_lenghte(map[0]);
-			map_height++;
-		}
-   		init_window(&game, map_width , map_height);
-    	load_textures(&game, &game.tx);
-		
-		render_map(&game, map, &game.tx);
-		ft_player_pos(&game.player, map);
-		render_map(&game, map, &game.tx);
-		mlx_key_hook(game.win, keyHandler, &game);
-		mlx_loop(game.mlx);
-	}else
-	{
-		ft_putstr_fd("\033[1;31m🛑ERROR: few args\033[0m\n", 2);
+		ft_putstr_fd("\033[1;31m🛑ERR:Map Err\033[0m\n", 2);
 		exit(1);
 	}
-
-    return 0;
+	if (ac > 1)
+	{
+		ft_count(map, &map_height, &map_width);
+		init_window(&game, map_width, map_height);
+		load_textures(&game, &game.tx);
+		render_map(&game, map);
+		ft_player_pos(&game.player, map);
+		mlx_key_hook(game.win, key_handler, &game);
+		mlx_loop(game.mlx);
+	}
+	else
+		ft_putstr_fd("\033[1;31m🛑ERROR: few args\033[0m\n", 2);
 }

@@ -1,26 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   freeing.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/11 09:37:34 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/22 10:28:01 by zogrir           ###   ########.fr       */
+/*   Created: 2025/02/22 10:45:39 by zogrir            #+#    #+#             */
+/*   Updated: 2025/02/22 10:50:50 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-void	ft_free_arr(char **arr)
+void	ft_putchar_fd(char c, int fd)
 {
-	int	i;
+	write(fd, &c, 1);
+	write(1, "\n", 1);
+}
 
-	i = 0;
-	while (arr[i])
+void	ft_putnbr_fd(int n, int fd)
+{
+	long	nbr;
+
+	nbr = n;
+	if (fd >= 0)
 	{
-		free(arr[i]);
-		i++;
+		if (nbr < 0)
+		{
+			ft_putchar_fd('-', fd);
+			nbr *= -1;
+		}
+		if (nbr > 9)
+		{
+			ft_putnbr_fd((nbr / 10), fd);
+			ft_putchar_fd((nbr % 10) + '0', fd);
+		}
+		else
+		{
+			ft_putchar_fd((nbr % 10) + '0', fd);
+		}
 	}
-	free(arr);
 }

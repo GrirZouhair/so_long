@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:08:44 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/15 12:26:19 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/22 10:27:24 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static int	ft_check(char c)
 {
 	if (c == '\n')
 		return (1);
-	if(c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P')
+	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P')
 	{
-		return(1);
+		return (1);
 	}
 	return (0);
 }
@@ -45,7 +45,6 @@ int	ft_valid_char(char **map)
 	}
 	return (1);
 }
-
 
 int	ft_valid_rectangular(char **map)
 {
@@ -94,6 +93,6 @@ int	ft_valid_elements(char **map)
 		i++;
 	}
 	if (wc_e != 1 || wc_c <= 0 || wc_p != 1)
-		return ((ft_putstr_fd("\033[1;31m🛑ERROR:invalid elements\033[0m\n", 2), 0));
+		return ((ft_putstr_fd("\033[1;31m🛑ERR:invalid\033[0m\n", 2), 0));
 	return (1);
 }

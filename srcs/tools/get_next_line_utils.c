@@ -6,12 +6,12 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 08:26:59 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/21 02:27:35 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/22 10:35:56 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/so_long.h"
 
-#include "../../includes/get_next_line.h"
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -86,8 +86,6 @@ size_t	ft_strlcpy(char *dest, char *src, size_t size)
 			dest[i] = src[i];
 			i++;
 		}
-		// dest[i] = '\n';
-		// dest[++i] = '\0';
 		dest[i] = '\0';
 	}
 	return (st_len);
