@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 11:23:11 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/23 00:07:31 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/23 01:13:51 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,34 +103,34 @@ int	count_collection(char **map)
 	}
 	return (count);
 }
-
-static int	ft_validate_path(char **map)
+static int    ft_validate_path(char **map)
 {
-	int		x;
-	int		y;
-	int		i;
-	int		j;
-	char	**copy;
-	int		ec;
+    int        x;
+    int        y;
+    int        i;
+    int        j;
+    char    **copy;
+    int        ec;
 
-	(1) && (i = 0, ec = 0);
-	copy = ft_duplicate_map(map);
-	ft_find_player_position(map, &x, &y);
-	flood_fill(copy, x, y, &ec);
-	while (copy[i])
-	{
-		j = 0;
-		while (copy[i][j])
-		{
-			if (copy[i][j] == 'C')
-				return (ft_putstr_fd("\033[1;31m🛑ERROR:path\033[0m\n", 2), 0);
-			j++;
-		}
-		i++;
-	}
-	if (ec != count_collection(map))
-		return (ft_putstr_fd("\033[1;31m🛑ERROR:invalid placement\033[0m\n", 2), 0);
-	return (1);
+    (1) && (i = 0, ec = 0);
+    copy = ft_duplicate_map(map);
+    ft_find_player_position(map, &x, &y);
+    flood_fill(copy, x, y, &ec);
+    while (copy[i])
+    {
+        j = 0;
+        while (copy[i][j])
+        {
+            if (copy[i][j] == 'C')
+                return (ft_free_arr(copy), ft_putstr_fd("\033[1;31m🛑ERROR:path\033[0m\n", 2), 0);
+            j++;
+        }
+        i++;
+    }
+    if (ec != count_collection(map))
+        return (ft_free_arr(copy), ft_putstr_fd("\033[1;31m🛑ERROR:invalid placement\033[0m\n", 2), 0);
+    ft_free_arr(copy);
+    return (1);
 }
 
 int	validate_map(char **map)
