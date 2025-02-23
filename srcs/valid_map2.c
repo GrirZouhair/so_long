@@ -6,7 +6,7 @@
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 11:23:11 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/23 01:13:51 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/23 11:14:37 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,24 @@ static void	ft_find_player_position(char **map, int *x, int *y)
 	*y = -1;
 }
 
-static void	flood_fill(char **map, int x, int y, int *ec)
+static void	flood_fill(char **map, int x, int y, int *ec, int *exit_reached)
 {
-	if (map[y] == NULL || map[y][x] == '\0' || x < 0 || y < 0
-		|| map[y][x] == '1' || map[y][x] == 'E')
+	if (x < 0 || y < 0 || map[y] == NULL || map[y][x] == '\0')
 		return ;
-	if (map[y][x] == 'C' || map[y][x] == 'E')
+	if (map[y][x] == '1' || map[y][x] == 'V')
+		return ;
+	if (map[y][x] == 'E')
+	{
+		*exit_reached = 1;
+		return ;
+	}
+	if (map[y][x] == 'C')
 		(*ec)++;
-	map[y][x] = '1';
-	flood_fill(map, x + 1, y, ec);
-	flood_fill(map, x - 1, y, ec);
-	flood_fill(map, x, y + 1, ec);
-	flood_fill(map, x, y - 1, ec);
+	map[y][x] = 'V';
+	flood_fill(map, x + 1, y, ec, exit_reached);
+	flood_fill(map, x - 1, y, ec, exit_reached);
+	flood_fill(map, x, y + 1, ec, exit_reached);
+	flood_fill(map, x, y - 1, ec, exit_reached);
 }
 
 int	count_collection(char **map)
@@ -94,43 +100,37 @@ int	count_collection(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] == 'C')
-			{
 				count++;
-			}
 			j++;
 		}
 		i++;
 	}
 	return (count);
 }
-static int    ft_validate_path(char **map)
-{
-    int        x;
-    int        y;
-    int        i;
-    int        j;
-    char    **copy;
-    int        ec;
 
-    (1) && (i = 0, ec = 0);
-    copy = ft_duplicate_map(map);
-    ft_find_player_position(map, &x, &y);
-    flood_fill(copy, x, y, &ec);
-    while (copy[i])
-    {
-        j = 0;
-        while (copy[i][j])
-        {
-            if (copy[i][j] == 'C')
-                return (ft_free_arr(copy), ft_putstr_fd("\033[1;31m🛑ERROR:path\033[0m\n", 2), 0);
-            j++;
-        }
-        i++;
-    }
-    if (ec != count_collection(map))
-        return (ft_free_arr(copy), ft_putstr_fd("\033[1;31m🛑ERROR:invalid placement\033[0m\n", 2), 0);
-    ft_free_arr(copy);
-    return (1);
+static int	ft_validate_path(char **map)
+{
+	int		x;
+	int		y;
+	int		i;
+	char	**copy;
+	int		ec;
+	int		exit_reached;
+
+	i = 0;
+	ec = 0;
+	exit_reached = 0;
+	copy = ft_duplicate_map(map);
+	ft_find_player_position(map, &x, &y);
+	flood_fill(copy, x, y, &ec, &exit_reached);
+	if (ec != count_collection(map))
+		return (ft_free_arr(copy),
+			ft_putstr_fd("\033[1;31m🛑ERR:Unreachable keys\033[0m\n", 2), 0);
+	if (!exit_reached)
+		return (ft_free_arr(copy),
+			ft_putstr_fd("\033[1;31m🛑ERR: Unreachable exit\033[0m\n", 2), 0);
+	ft_free_arr(copy);
+	return (1);
 }
 
 int	validate_map(char **map)
