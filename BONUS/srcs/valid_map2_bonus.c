@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_map2.c                                       :+:      :+:    :+:   */
+/*   valid_map2_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 11:23:11 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/23 11:36:24 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/24 08:12:16 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 static void	ft_find_player_position(char **map, int *x, int *y)
 {

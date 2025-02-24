@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 04:33:57 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/23 12:23:42 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/23 12:24:07 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
 # include "mlx.h"
-# include "get_next_line.h"
+# include "get_next_line_bonus.h"
 
 typedef struct s_player
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_line.c                                        :+:      :+:    :+:   */
+/*   read_line_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 09:02:21 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/23 12:21:46 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/24 08:12:08 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 char	**ft_allocation(char **map, char *file_name)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window_textures.c                                  :+:      :+:    :+:   */
+/*   window_textures_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zogrir <zogrir@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 11:17:19 by zogrir            #+#    #+#             */
-/*   Updated: 2025/02/23 12:12:30 by zogrir           ###   ########.fr       */
+/*   Updated: 2025/02/24 08:12:20 by zogrir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 void	init_window(t_game *game, int w_win, int h_win)
 {
@@ -44,30 +44,32 @@ void	load_textures(t_game *game, t_textures *tx)
 			&game->width_win, &game->height_win);
 }
 
-static void	render_tile(t_game *game, char tile, int x, int y)
+static void	draw_tile(t_game *game, char tile, int x, int y)
 {
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->tx.floor, x * 32, y * 32);
 	if (tile == '1')
-	{
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->tx.wall, x * 32, y * 32);
-	}
 	else if (tile == 'P')
-	{
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->tx.player, x * 32, y * 32);
-	}
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->tx.player, x * 32, y * 32);
 	else if (tile == 'C')
-	{
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->tx.collective, x * 32, y * 32);
-	}
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->tx.collective, x * 32, y * 32);
 	else if (tile == 'E')
-	{
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->tx.exit, x * 32, y * 32);
-	}
+		mlx_put_image_to_window(game->mlx,
+			game->win, game->tx.exit, x * 32, y * 32);
+}
+
+static void	render_tile(t_game *game, char tile, int x, int y)
+{
+	char	*tmp;
+
+	tmp = ft_itoa(game->player.moves);
+	mlx_put_image_to_window(game->mlx,
+		game->win, game->tx.floor, x * 32, y * 32);
+	mlx_string_put(game->mlx, game->win, 1, 1, 0xFFFFFF, tmp);
+	free(tmp);
+	draw_tile(game, tile, x, y);
 }
 
 void	render_map(t_game *game, char **map)
