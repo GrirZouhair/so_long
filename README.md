@@ -147,7 +147,7 @@ Test with various map configurations:
 
 **Zouhair Grir**
 - GitHub: [@GrirZouhair](https://github.com/GrirZouhair)
-- 42 Intra: zgrir
+- 42 Intra: zogrir
 
 ## 📄 License
 
