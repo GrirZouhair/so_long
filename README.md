@@ -1,58 +1,158 @@
-# so_long
+# 🎮 so_long
 
-A small 2D game written in C using the MiniLibX graphics library.
+A simple 2D game built with the MiniLibX graphics library as part of the 42 school curriculum.
 
-This project is part of the 42 School curriculum. The goal is to create a top-down 2D game where the player navigates a map, collects all collectibles, and exits once all collectibles are gathered. :contentReference[oaicite:1]{index=1}
+## 📖 Description
+
+**so_long** is a small 2D game where the player must collect all collectibles on a map and reach the exit. The project introduces basic game development concepts including sprite rendering, event handling, and map parsing using the MiniLibX library.
+
+## 🎯 Objectives
+
+- Create a functional 2D game using MiniLibX
+- Parse and validate `.ber` map files
+- Handle keyboard events for player movement
+- Implement game logic (collectibles, exit, walls)
+- Display movement count
+
+## 🛠️ Installation
+
+### Prerequisites
+
+- GCC compiler
+- Make
+- MiniLibX library
+- X11 development libraries (Linux)
+
+### Clone & Build
+
+```bash
+git clone https://github.com/GrirZouhair/so_long.git
+cd so_long
+make
+```
+
+## 🚀 Usage
+
+```bash
+./so_long maps/map.ber
+```
+
+### Controls
+
+| Key | Action |
+|-----|--------|
+| `W` / `↑` | Move up |
+| `A` / `←` | Move left |
+| `S` / `↓` | Move down |
+| `D` / `→` | Move right |
+| `ESC` | Exit game |
+
+## 🗺️ Map Format
+
+Maps must be `.ber` files with the following specifications:
+
+### Characters
+
+| Character | Description |
+|-----------|-------------|
+| `1` | Wall |
+| `0` | Empty space |
+| `C` | Collectible |
+| `E` | Exit |
+| `P` | Player starting position |
+
+### Rules
+
+- Map must be rectangular
+- Map must be surrounded by walls (`1`)
+- Must contain exactly **1** player (`P`)
+- Must contain exactly **1** exit (`E`)
+- Must contain at least **1** collectible (`C`)
+- A valid path must exist to collect all items and reach the exit
+
+### Example Map
+
+```
+1111111111111
+10010000000C1
+1000011111001
+1P0011E000001
+1111111111111
+```
+
+## 📁 Project Structure
+
+```
+so_long/
+├── Makefile
+├── includes/
+│   └── so_long.h
+├── srcs/
+│   ├── main.c
+│   ├── parsing/
+│   │   ├── map_parser.c
+│   │   ├── map_validator.c
+│   │   └── path_checker.c
+│   ├── game/
+│   │   ├── game_init.c
+│   │   ├── player_movement.c
+│   │   └── render.c
+│   └── utils/
+│       ├── error_handling.c
+│       └── free_memory.c
+├── textures/
+│   ├── wall.xpm
+│   ├── floor.xpm
+│   ├── player.xpm
+│   ├── collectible.xpm
+│   └── exit.xpm
+├── maps/
+│   └── *.ber
+└── libft/
+```
+
+## ✨ Features
+
+- **Map Validation**: Comprehensive error checking for map files
+- **Flood Fill Algorithm**: Validates that all collectibles and exit are reachable
+- **Move Counter**: Displays number of movements in terminal
+- **Clean Exit**: Proper memory management on window close or ESC
+
+## 🎨 Bonus Features (Optional)
+
+- Enemy patrols that cause game over on collision
+- Sprite animations
+- On-screen move counter display
+
+## 🧪 Testing
+
+Test with various map configurations:
+
+```bash
+# Valid map
+./so_long maps/valid.ber
+
+# Invalid maps (should display error)
+./so_long maps/no_exit.ber
+./so_long maps/not_rectangular.ber
+./so_long maps/no_path.ber
+```
+
+## 📚 Resources
+
+- [MiniLibX Documentation](https://harm-smits.github.io/42docs/libs/minilibx)
+- [42 Docs - so_long](https://harm-smits.github.io/42docs/projects/so_long)
+
+## 👤 Author
+
+**Zouhair Grir**
+- GitHub: [@GrirZouhair](https://github.com/GrirZouhair)
+- 42 Intra: zgrir
+
+## 📄 License
+
+This project is part of the 42 school curriculum.
 
 ---
 
-## 📌 Table of Contents
-
-- [About](#about)  
-- [Features](#features)  
-- [Map Rules](#map-rules)  
-- [Requirements](#requirements)  
-- [Installation](#installation)  
-- [Usage](#usage)  
-- [Controls](#controls)  
-- [Game Rules](#game-rules)  
-- [Project Structure](#project-structure)  
-- [License](#license)
-
----
-
-## 🧠 About
-
-`so_long` is a simple 2D game implemented in C that uses the MiniLibX library to manage window rendering, sprites, and keyboard input. The player must collect all items (`C`) and then reach the exit (`E`) without walking through walls. :contentReference[oaicite:2]{index=2}
-
----
-
-## 🎯 Features
-
-- Parse and validate map files with `.ber` extension  
-- Display using MiniLibX  
-- Keyboard input for player movement  
-- Collision detection  
-- Movement counter printed to terminal  
-- Basic game logic (collectibles, finish condition) :contentReference[oaicite:3]{index=3}
-
----
-
-## 🗺️ Map Rules
-
-Your `.ber` map must:
-
-1. Be a rectangular grid  
-2. Be surrounded by walls (`1`)  
-3. Include at least one collectible (`C`)  
-4. Include one starting position (`P`)  
-5. Include one exit (`E`)  
-6. Only contain these characters:  
-   - `1` — wall  
-   - `0` — empty space  
-   - `P` — player  
-   - `C` — collectible  
-   - `E` — exit :contentReference[oaicite:4]{index=4}
-
-Example valid map:
-
+*Made with ❤️ at 42*
